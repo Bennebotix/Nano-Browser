@@ -50,7 +50,19 @@
         <title>Nano Browser v1</title>
     </head>
     <body>
-        Nano Browser
-        <iframe id="content-frame" style="width: 100%; height: 100vh; border: none;"></iframe>
+        <div class="browser">
+            <div class="navbar">
+                <input type="text" id="searchBar" placeholder="Search or enter URL...">
+                <button id="searchButton">Go</button>
+                <div class="tabs">
+                    <div class="tab active" data-url="https://www.example.com">Tab 1</div>
+                    <div class="tab" data-url="form.html">Tab 2</div>
+                </div>
+            </div>
+            <div class="iframe-container">
+                <iframe id="webpageFrame" src="https://www.example.com" title="Webpage" class="iframe"></iframe>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/app.js"></script>
     </body>
 </html>
