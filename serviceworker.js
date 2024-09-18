@@ -1,23 +1,11 @@
-const CACHE_NAME = 'uv-cache-v1';
-const redirectUrl = 'https://slither.io'; // Target URL
+const CACHE_NAME = 'nano-borwser-cache-v1';
+const redirectUrl = 'https://example.com'; // Change to your desired redirect URL
 
-const ASSETS_TO_CACHE = [
-    "/",
-    "/js/search.js",
-    "/serviceworker.js",
-    "/manifest.json",
-    "/index.html",
-    "/images/icon512_maskable.png",
-    "/images/icon512_rounded.png"
-];
-
-// Install event - caches initial assets if needed
 self.addEventListener('install', (event) => {
     console.log('[Service Worker] Installing...');
-    // You can add assets to cache here if needed
+    // Cache any assets you need here if necessary
 });
 
-// Activate event - cleans up old caches
 self.addEventListener('activate', (event) => {
     console.log('[Service Worker] Activating...');
     event.waitUntil(
@@ -34,12 +22,10 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// Fetch event - intercepts and handles requests
 self.addEventListener('fetch', (event) => {
     event.respondWith(handleRequest(event.request));
 });
 
-// Function to handle requests
 async function handleRequest(request) {
     const url = new URL(request.url);
 
@@ -47,6 +33,8 @@ async function handleRequest(request) {
     const newUrl = new URL(redirectUrl);
     newUrl.pathname = url.pathname;
     newUrl.search = url.search;
+
+    console.log(`Fetching URL: ${newUrl.toString()}`);
 
     try {
         const response = await fetch(newUrl.toString(), {
@@ -56,20 +44,22 @@ async function handleRequest(request) {
             redirect: 'manual'
         });
 
-        if (response.ok) {
-            const responseClone = response.clone();
-            if (url.pathname.endsWith('.html')) {
-                // Cache HTML responses
-                caches.open(CACHE_NAME).then((cache) => {
-                    cache.put(request, responseClone);
-                });
-            }
-            return response;
-        } else {
+        if (!response.ok) {
+            console.error(`Failed to fetch ${newUrl.toString()}: ${response.statusText}`);
             return new Response('Error fetching the URL', { status: 500 });
         }
+
+        const responseClone = response.clone();
+        if (url.pathname.endsWith('.html')) {
+            // Cache HTML responses
+            caches.open(CACHE_NAME).then((cache) => {
+                cache.put(request, responseClone);
+            });
+        }
+
+        return response;
     } catch (error) {
-        console.error('[Service Worker] Fetch failed:', error);
+        console.error(`Fetch error: ${error}`);
         return new Response('Error fetching the URL', { status: 500 });
     }
 }
