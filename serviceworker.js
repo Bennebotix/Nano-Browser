@@ -8,6 +8,7 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('message', (event) => {
     if (event.data.type === 'NAVIGATE') {
+        console.log('"NAVIGATE" recived!')
         fetch(event.data.url)
             .then(response => response.text())
             .then(text => {
