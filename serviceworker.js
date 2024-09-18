@@ -23,7 +23,8 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-    event.respondWith(handleRequest(event.request));
+    //event.respondWith(handleRequest(event.request));
+    event.respondWith(event.request);
 });
 
 async function handleRequest(request) {
