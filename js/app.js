@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     searchButton.addEventListener("click", () => {
         const url = searchBar.value;
-        iframe.src = search(url, "https://www.google.co.uk/search?q=%s");
+        iframe.src = search(url, "https://www.google.com/search?q=%s");
     });
 
     tabs.forEach(tab => {
