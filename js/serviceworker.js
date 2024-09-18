@@ -1,4 +1,4 @@
-const sw = new NanoServiceWorker();
+const sw = new UVServiceWorker();
 
 async function handleRequest(event) {
     if (sw.route(event)) {
