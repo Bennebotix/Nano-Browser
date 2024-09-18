@@ -22,8 +22,6 @@
                     navigator.serviceWorker.register('/serviceworker.js')
                     .then((registration) => {
                         serviceWorkerRegistration = registration;
-
-                        alert('yay')
                         
                         console.log('Service Worker registered with scope:', registration.scope);
                         // Load content into the iframe after Service Worker is ready
