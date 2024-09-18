@@ -48,15 +48,14 @@ body {
 
 .tab {
     padding: 10px 15px;
-    background-color: #f1f1f1;
+    background-color: #fff;
     margin-left: 5px;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .tab.active {
-    background-color: #fff;
-    border-bottom: 2px solid #0078D4;
+    background-color: #ddd;
 }
 
 .iframe-container {
