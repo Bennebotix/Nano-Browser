@@ -13,6 +13,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="css/style.css" />
     <title>Nano Browser v1</title>
+    
+    <script>
+        var serviceWorkerRegistration;
+        
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function() {
+                navigator.serviceWorker
+                .register("/serviceWorker.js")
+                .then(res => {        
+                    console.log("service worker registered", res);      
+                    serviceWorkerRegistration = res;
+                })
+                .catch(err => console.log("service worker not registered", err))
+            })
+        }
+        
+        var rebootServiceWorker = () => {
+            if (navigator.onLine) {
+                serviceWorkerRegistration.unregister();
+                localStorage.clear();
+                window.location.reload();
+            } else {
+                cli.write('Client is not online!');
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="browser">
