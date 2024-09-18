@@ -1,1 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.browser {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #0078D4;
+    border-radius: 8px 8px 0 0;
+}
+
+#searchBar {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+}
+
+#searchButton {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #0056A6;
+    color: white;
+    cursor: pointer;
+}
+
+#searchButton:hover {
+    background-color: #004B8D;
+}
+
+.tabs {
+    display: flex;
+    margin-left: 10px;
+}
+
+.tab {
+    padding: 10px 15px;
+    background-color: #f1f1f1;
+    margin-left: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #fff;
+    border-bottom: 2px solid #0078D4;
+}
+
+.iframe-container {
+    height: 600px;
+}
+
+.iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0 0 8px 8px;
+}
 
