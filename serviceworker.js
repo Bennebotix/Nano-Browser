@@ -40,6 +40,7 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+    alert('yay')
     event.respondWith(
         handleRequest(event.request)
     );
