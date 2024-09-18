@@ -1,6 +1,4 @@
-const redirectUrl = 'https://google.com';
-
-const CACHE_NAME = 'my-cache-v1'; // Change this version string to invalidate old caches
+const CACHE_NAME = 'my-cache-v1';
 const ASSETS_TO_CACHE = [
     "/",
     "/js/search.js",
@@ -10,6 +8,8 @@ const ASSETS_TO_CACHE = [
     "/images/icon512_maskable.png",
     "/images/icon512_rounded.png"
 ];
+
+const redirectUrl = 'https://example.com'; // Change to your desired redirect URL
 
 self.addEventListener('install', (event) => {
     console.log('[Service Worker] Installing...');
@@ -40,18 +40,17 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-    alert('yay')
     event.respondWith(
         handleRequest(event.request)
     );
 });
 
 async function handleRequest(request) {
-    try {
-        const newUrl = new URL(redirectUrl);
-        newUrl.pathname = new URL(request.url).pathname;
-        newUrl.search = new URL(request.url).search;
+    const newUrl = new URL(redirectUrl);
+    newUrl.pathname = new URL(request.url).pathname;
+    newUrl.search = new URL(request.url).search;
 
+    try {
         const response = await fetch(newUrl.toString(), {
             method: request.method,
             headers: request.headers,
@@ -59,35 +58,11 @@ async function handleRequest(request) {
             redirect: 'manual'
         });
 
-        return response;
-    } catch (error) {
-        console.error('[Service Worker] Fetch failed:', error);
-        return new Response('Error fetching the redirect URL', { status: 500 });
-    }
-}
-
-async function handleRequest(request) {
-    try {
-        const newUrl = new URL(redirectUrl);
-        newUrl.pathname = new URL(request.url).pathname;
-        newUrl.search = new URL(request.url).search;
-
-        let response;
-        if (request.url.endsWith('.js') || request.url.endsWith('.css')) {
-            // Example: handle JavaScript and CSS files
-            response = await fetch(newUrl.toString(), {
-                method: request.method,
-                headers: request.headers,
-                body: request.method === 'POST' || request.method === 'PUT' ? request.body : null,
-                redirect: 'manual'
-            });
-        } else {
-            // Handle other types of requests or assets
-            response = await fetch(newUrl.toString(), {
-                method: request.method,
-                headers: request.headers,
-                body: request.method === 'POST' || request.method === 'PUT' ? request.body : null,
-                redirect: 'manual'
+        // Cache the response for HTML content
+        if (response.ok && request.destination === 'document') {
+            const clonedResponse = response.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+                cache.put(request, clonedResponse);
             });
         }
 
