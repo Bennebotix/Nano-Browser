@@ -50,18 +50,18 @@
     </head>
     <body>
         <div class="browser">
-            <div class="navbar">
-                <input type="text" id="searchBar" placeholder="Search or enter URL...">
-                <button id="searchButton">Go</button>
-                <div class="tabs">
-                    <div class="tab active" data-url="https://www.google.com?igu=1">Tab 1</div>
-                    <div class="tab" data-url="https://www.google.com?igu=1">Tab 2</div>
-                </div>
-            </div>
-            <div class="iframe-container">
-                <iframe id="webpageFrame" src="https://www.example.com" title="Webpage" class="iframe"></iframe>
-            </div>
+        <div class="tabs">
+            <div class="tab active" data-url="https://www.google.com?igu=1">Tab 1</div>
+            <div class="tab" data-url="https://example.com">Tab 2</div>
         </div>
+        <div class="navbar">
+            <input type="text" id="searchBar" placeholder="Search or enter URL...">
+            <button id="searchButton">Go</button>
+        </div>
+        <div class="iframe-container">
+            <iframe id="webpageFrame" src="https://www.google.com?igu=1" title="Webpage" class="iframe"></iframe>
+        </div>
+    </div>
         <script type="text/javascript" src="js/app.js"></script>
     </body>
 </html>
