@@ -6,9 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     searchButton.addEventListener("click", () => {
         const url = searchBar.value;
-        if (url) {
-            iframe.src = url.startsWith("http") ? url : `http://${url}`;
-        }
+        iframe.src = search(url);
     });
 
     tabs.forEach(tab => {
