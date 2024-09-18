@@ -42,6 +42,7 @@ function go(val = searchBar.value) {
 // Handle messages from service worker
 navigator.serviceWorker.addEventListener('message', event => {
     if (event.data.type === 'UPDATE_CONTENT') {
+        alert('hi')
         document.getElementById('content').innerHTML = event.data.content;
     }
 });
