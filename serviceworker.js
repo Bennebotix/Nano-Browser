@@ -1,5 +1,5 @@
 const CACHE_NAME = 'nano-borwser-cache-v1';
-const redirectUrl = 'https://www.minnetonkaschools.org'; // Change to your desired redirect URL
+const redirectUrl = 'https://raw.githubusercontent.com/Bennebotix/Nano-Browser/main/manifest.json'; // Change to your desired redirect URL
 
 self.addEventListener('install', (event) => {
     console.log('[Service Worker] Installing...');
