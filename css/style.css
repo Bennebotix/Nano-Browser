@@ -1,24 +1,43 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #f4f4f4;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text color */
 }
 
 .browser {
-    border: 1px solid #ccc;
+    border: 1px solid #333;
     border-radius: 8px;
     width: 90%;
     max-width: 1200px;
     margin: 20px auto;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    background-color: #1e1e1e; /* Dark container */
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #333;
+}
+
+.tab {
+    padding: 10px 15px;
+    background-color: #1e1e1e; /* Dark tab background */
+    margin-right: 5px;
+    border-radius: 4px 4px 0 0;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #0078D4; /* Active tab color */
+    color: white; /* Text color for active tab */
+    border-bottom: 2px solid #0078D4; /* Active tab border */
 }
 
 .navbar {
     display: flex;
     align-items: center;
     padding: 10px;
-    background-color: #0078D4;
-    border-radius: 8px 8px 0 0;
 }
 
 #searchBar {
@@ -26,6 +45,8 @@ body {
     padding: 10px;
     border: none;
     border-radius: 4px;
+    background-color: #2a2a2a; /* Dark search bar */
+    color: #e0e0e0; /* Light text color */
 }
 
 #searchButton {
@@ -41,23 +62,6 @@ body {
     background-color: #004B8D;
 }
 
-.tabs {
-    display: flex;
-    margin-left: 10px;
-}
-
-.tab {
-    padding: 10px 15px;
-    background-color: #fff;
-    margin-left: 5px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.tab.active {
-    background-color: #ddd;
-}
-
 .iframe-container {
     height: 600px;
 }
@@ -67,5 +71,5 @@ body {
     height: 100%;
     border: none;
     border-radius: 0 0 8px 8px;
+    background-color: #fff; /* Ensure iframe content is readable */
 }
-
