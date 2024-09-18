@@ -4,16 +4,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const tabs = document.querySelectorAll(".tab");
     const iframe = document.getElementById("webpageFrame");
 
-    searchButton.addEventListener("click", () => {
-        const url = searchBar.value;
-        iframe.src = search(url, "https://www.google.com/search?igu=1&q=%s");
-    });
+    function go(val) {
+        const url = search(val, "https://www.google.com/search?igu=1&q=%s");
+        iframe.src = url;
+        searchBar.value = url;
+
+        tabs.forEach(tab => {
+            if (tab.class.includes('active')) {
+                tab.dataset.url = val;
+            }
+        });
+    };
 
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
             tabs.forEach(t => t.classList.remove("active"));
             tab.classList.add("active");
-            iframe.src = tab.dataset.url;
+            go(tab.dataset.url);
         });
     });
 });
