@@ -17,7 +17,7 @@ function go(val = searchBar.value) {
     searchBar.value = url;
 
     tabs.forEach(tab => {
-        if (tab.class.includes('active')) {
+        if (tab.classList[1] == "active") {
             tab.dataset.url = val;
         }
     });
