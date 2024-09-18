@@ -1,5 +1,5 @@
 const CACHE_NAME = 'uv-cache-v1';
-const redirectUrl = 'https://example.com'; // Target URL
+const redirectUrl = 'https://slither.io'; // Target URL
 
 const ASSETS_TO_CACHE = [
     "/",
